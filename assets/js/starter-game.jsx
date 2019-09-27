@@ -10,7 +10,14 @@ export default function game_init(root) {
 class Starter extends React.Component {
   constructor(props) {
     super(props);
-    const alphabetArray = 
+    /* The state contains following variables:  
+     * buttonValues contains a map of values that needs to be displayed in buttons along with isDisplayed and isMarkedCompleted attributes.
+     * currentNoOfTiles represents the number of tiles that are not matched yet.
+     * numberOfClicks represents the total clicks user has taken so far in the game.
+     * secondTileIndex represents the index value of the second button which the user clicks for matching.
+     * isContinue is a flag which allows the user to click further buttons or not.
+     * isMatchFound is a flag which tells whether the user has clicked first button or second button.
+     * */
     this.state = { buttonValues: this.setButtonValues(), 
                    currentNoOfTiles: 16,
 	           numberOfClicks: 0,
@@ -20,7 +27,11 @@ class Starter extends React.Component {
                  };
   }
 
-  
+ /*
+  * This function shuffles the alphabets in the list and then creates a map which contains value, isDisplayed and isMarkedCompleted as the keys.
+  * The value key stores the alphabet, isDisplayed is a flag which says whether the alphabet should be displayed in the button and isMarkedCompleted is a
+  * flag which tells whether the tile is found a matching pair or not.
+  */
   setButtonValues(){
       let alphabetList = ['A','B','C','D','E','F','G','H','A','B','C','D','E','F','G','H'];
 
@@ -49,6 +60,10 @@ class Starter extends React.Component {
 
   //Attribution : Understood the tic toe game from https://reactjs.org/tutorial/tutorial.html and then created below logic on my own. 
 
+ /*
+  * This function is executed when the button is clicked. If only the first button is clicked then it will store the index to secondTileIndex and change the 
+  * isDisplayed flag of that tile to true and update the state. If the second button is clicked, it calls the validateForMatching function to check if two tiles have same values. 
+  */
   onClickTile(i) {
   
   if(this.state.isContinue){
@@ -77,6 +92,11 @@ class Starter extends React.Component {
     }
   }
 
+ /*
+  * This function is called if two tiles are clicked. If both tiles have same values then it changes the isMarkedCompleted flag of both tiles to true
+  * and continues the game by updating the state for finding next matching pairs. If both tiles are not matching, it will show the values for one second 
+  * and hide the values after that delay by updating the isDisplayed flag to false. The state is then updated and game is continued for next matching pairs.
+  */
   validateForMatching(i,copyButtonValues){
         
 	  this.setState({
@@ -114,6 +134,9 @@ class Starter extends React.Component {
 	    }
    }
 
+ /*
+  * This function resets the full game and brings back the original state of the game.
+  */
   reset(){
          this.setState({
             buttonValues: this.setButtonValues(),
@@ -125,6 +148,10 @@ class Starter extends React.Component {
         });  
   }
 
+  /*
+   * This function renders the html layout and also keeps track of number of Clicks made by user. It also displays the appropriate status message
+   * if the user has won the game.
+   */
   render() {
 
       let statusMessage;
@@ -168,7 +195,7 @@ class Starter extends React.Component {
 		    <button id = "b16" onClick={() => this.onClickTile(15)}><TileValue tileValue = {this.state.buttonValues[15].tileValue} isDisplayed = {this.state.buttonValues[15].isDisplayed} /></button>
 		  </div>
 	          <button id="r1" onClick={() => this.reset()}>Reset</button><br /><br />
-	          <h5> Total Clicks By User: {numberOfClicks} </h5>
+	          <h5> Total Clicks: {numberOfClicks} </h5>
 	 </div>
 	 </center>
        </div>
@@ -177,6 +204,9 @@ class Starter extends React.Component {
   }
 }
 
+/*
+ * This function displays the value on button if the isDisplayed flag of that button is true. Else, the button value is not displayed.
+ */
 function TileValue(props){
   if(props.isDisplayed){
        return (props.tileValue);
