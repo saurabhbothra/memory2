@@ -11,6 +11,5 @@ echo "Starting app..."
 # Foreground for testing and for systemd
 _build/prod/rel/memory/bin/memory start
 
-# TODO: Add a systemd service file
-#       to start your app on system boot.
+
 
