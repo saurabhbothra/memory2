@@ -7,22 +7,23 @@ Saurabh Bothra
 
 
 2. What's the URL of the github repo with your work for this HW?
-https://github.com/saurabhbothra/memory
+https://github.com/saurabhbothra/memory2.git
 
 
 
 3. What's the URL that you deployed to?
-memory1.saurabhbothra.xyz
+memory2.saurabhbothra.xyz
 
 
 
-4. Is your game functionality complete? If not, what's missing?
-Yes. Its complete.
+4. Is your game functionality complete, with the appropriate logic implemented
+as server-side elixir code? If not, what's missing?
+Yes, its complete.
 
 
 
 5. Is your game properly deployed? If not, what went wrong?
-Yes, Its properly deployed.
+Yes, its properly deployed.
 
 
 
